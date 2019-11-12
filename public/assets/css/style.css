@@ -1,0 +1,92 @@
+
+body{
+    background-color: #9999CC;
+}
+
+
+
+.carousel img {
+    max-height: 420px;
+}
+
+p.shortDescription {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.navbar{
+    max-height: 100%;
+    height:70px;
+
+}
+
+.navbarcolor {
+    background: #00003E; 
+    background: -webkit-linear-gradient(to right, #31BDE6, #00003E);  
+    background: linear-gradient(to right, #31BDE6, #00003E);  
+}
+
+.carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.card-img-top.cover {
+    width: 100%;
+    height: 60vw;
+    object-fit: cover;
+}
+
+@media (min-width: 576px) {
+    .card-img-top.cover {
+        width: 100%;
+        height: 50vw;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-img-top.cover {
+        width: 100%;
+        height: 80vw;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-img-top.cover {
+        width: 100%;
+        height: 40vw;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-img-top.cover {
+        width: 100%;
+        height: 34vw;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 1900px) {
+    .card-img-top.cover {
+        width: 100%;
+        height: 20vw;
+        object-fit: cover;
+    }
+}
+
+#logo_nav{
+    width:200px;
+    position: relative;
+    bottom: -32px; 
+}
+

@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h1>salles</h1>
+<ul>
+    {% for salle in salles %}
+    <li><a href="/Film/show/{{ salle.id }}">{{ salle.id }}. {{ salle.label }} .{{salle.capacite}} personnes</a></li>
+    {% else %}
+    <div class="alert alert-dark" role="alert">
+        Nothing to display
+    </div>
+    {% endfor %}
+</ul>
+<a href="/salle/add">Ajouter</a>
+{% endblock %}

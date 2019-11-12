@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbarcolor fixed-top ">
+  <div class="container">
+    <div id="logo_nav">
+      <img class="img-responsive" src="/assets/images/background/logo.jpg">
+    </div>
+    <button class="navbar-toggler" type="logo" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="http://localhost:8000/#!">Accueil
+
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/EnSalle/index">En salle</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Prochainement/index">Prochainement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Seance/list">Séances</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Contact/index">Contact</a>
+        </li>
+
+        {% if session.user or post.email  %}
+        <li><a class="btn btn-danger" input type="submit" href="/Utilisateur/deconnexion/" name="supp"
+            role="button">Déconnexion</a>
+          <div class="col-lg-1">
+          </div>
+          {% else %}
+
+        <li><a class="btn btn-primary" href="/Utilisateur/connexion" role="button">Se connecter</a>
+
+          {% endif %}
+
+          {% if session.is_admin is defined and session.is_admin == 1 %}
+        <li><a class="btn btn-success" href="/Utilisateur/administration" role="button">Administration</a>{% endif %}
+          {% if session.is_admin is defined and session.is_admin == 0 %}
+        <li><a class="btn btn-success" href="/Utilisateur/mytickets" role=" button">Mes tickets</a>{% endif %}
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% include "/commun/message.html.twig" %}

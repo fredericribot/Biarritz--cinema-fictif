@@ -1,0 +1,145 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+
+        {# PARTIE DE GAUCHE #}
+
+        <div class="col-md-6">
+
+            {# <div class="row pb-5">
+                <div class="col">
+                    <h2>Seance en cours</h2>
+                    <h5>| Séance de {{now|date('H')}} heures</h5>
+                    <hr>
+                    <ul class="list-group"></ul>
+                    {% for seance in seances %}
+                    {% if seance.horaire < now and seance.horaire < now %}
+                    <li class="list-group-item"><a href="/seance/show/{{seance.id}}">
+                            Salle n˚{{seance.id_salle}} – {{seance.film|upper}} à {{seance.horaire|date('H')}} heures
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div> #}
+
+            <div class="row pb-5">
+                <div class="col">
+                    <h2>Seance à venir aujourd'hui</h2>
+                    <hr>
+                    <ul class="list-group"></ul>
+                    {% for seance in seances %}
+                    {% if seance.horaire > now %}
+                    <li class="list-group-item "><a href="/seance/show/{{seance.id}}">
+                            Salle n˚{{seance.id_salle}} – {{seance.film|upper}} à {{seance.horaire|date('H')}} heures
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        {# PARTIE DE DROITE #}
+
+        <div class="col-md-6">
+
+            <h2>Programme de la journée</h2>
+            <hr>
+
+            <h3>Séances du matin – 10h</h3>
+            {% for seance in seances %}
+
+            {% if seance.horaire == "10:00:00" %}
+            <div class="row bg-light text-light py-3 my-2">
+                <div class="col">
+                    {% for film in films %}
+                    {% if film.id == seance.id_film %}
+                    <a href="/seance/show/{{seance.id}}">Salle n˚{{seance.id_salle}} – {{film.label|upper}}</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% else %}
+            <div class="alert alert-dark" role="alert">
+                Nothing to display
+            </div>
+            {% endfor %}
+
+            <h3>Séances de l'après-midi – 14h</h3>
+
+            {% for seance in seances %}
+
+            {% if seance.horaire == "14:00:00" %}
+            <div class="row bg-dark text-light py-3 my-2">
+                <div class="col">
+                    {% for film in films %}
+                    {% if film.id == seance.id_film %}
+                    Salle n˚{{seance.id_salle}} – {{film.label|upper}}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="alert alert-dark" role="alert">
+                Nothing to display
+            </div>
+            {% endfor %}
+
+            <h3>Séances du début de soirée – 18h</h3>
+
+            {% for seance in seances %}
+
+            {% if seance.horaire == "18:00:00" %}
+            <div class="row bg-dark text-light py-3 my-2">
+                <div class="col">
+                    {% for film in films %}
+                    {% if film.id == seance.id_film %}
+                    Salle n˚{{seance.id_salle}} – {{film.label|upper}}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="alert alert-dark" role="alert">
+                Nothing to display
+            </div>
+            {% endfor %}
+
+
+            <h3>Séances du soir – 22h</h3>
+
+            {% for seance in seances %}
+
+            {% if seance.horaire == "22:00:00" %}
+            <div class="row bg-dark text-light py-3 my-2">
+                <div class="col">
+                    {% for film in films %}
+                    {% if film.id == seance.id_film %}
+                    Salle n˚{{seance.id_salle}} – {{film.label|upper}}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="alert alert-dark" role="alert">
+                Nothing to display
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

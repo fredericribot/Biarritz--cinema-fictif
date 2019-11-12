@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"></a></li>
+      <li><a href="/Utilisateur/administration">Liste films</a></li>
+       <li><a href="/Film/add">Ajout film</a></li>
+      <li><a href="#">Séance</a></li>
+    </ul>
+  </div>
+</nav>
+</br></br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul id="list-example" class="list-group">
+        {% for film in films %}
+        <li class="list-group-item list-group-item-action" href="#list-item-1">
+          <h3>{{film.label}}</h3>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a class="btn btn-warning" href="/film/edit/{{film.id}}">Éditer</a></li>
+            <li class="list-inline-item"><a class="btn btn-danger" href="/film/delete/{{film.id}}">Supprimer</a></li>
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="btn-group" role="group" aria-label="Button group">
+      <a class="btn btn-primary m-2" href="/film/add">Ajouter un nouveau film</a>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

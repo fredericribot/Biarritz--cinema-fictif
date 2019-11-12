@@ -1,0 +1,108 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+
+<div class="py-5">
+
+    <div class="jumbotron jumbotron-fluid">
+
+        <div class="container">
+            <h1 class="display-4">{{film.label}}
+                Seance de {{seance.horaire|date('H')}} h | Salle {{seance.id_salle}}</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% if session.is_admin == 0 %}
+                <div class="col">
+                    <form method="post">
+                        {% for tarif in tarifs %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="id_tarif" id="exampleRadios1"
+                                value="{{tarif.id}}" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                {{tarif.label}} – {{tarif.prix}} €
+                            </label>
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-outline-success btn-block">Confimer la réservation</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="card-content">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="{{ film.image }}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="car-title">{{ film.label }}</h2>
+                    </div>
+                    <div class="col-md-4">
+
+                        {% if film.coup_de_coeur == 1 %}
+                        <span class="badge badge-pill text-danger">
+                            <i class="fas fa-3x fa-heart"></i>
+                        </span>
+                        {% else %}
+                        <span class="p-2">
+                            {% for i in 1..film.note_presse %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {# <div class="row">
+                    <div class="col-4">
+                        {{film.id_genre.value}}
+                    </div>
+                </div> #}
+                <div class="row py-3">
+                    <div class="col-lg-10">
+                        <div class="card-text">
+                            <p class="lead">
+                                {{film.synopsys}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6>Distribution</h6>
+                        <p>
+                            {{film.distribution}}
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6>Date de sortie</h6>
+                        <p>
+                            {{film.date_sortie}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="col offset-lg-6 col-lg-4">
+                        <a href="/seance/list" class="btn btn-sm lg-3 btn-outline-primary btn-block">
+                            Retour à la liste des séances
+                        </a>
+
+                    </div>
+
+                    {# <div class="card-text">
+                    <a class="" href="/film/details/{{ film.id }}" class="card-link">En savoir plus</a>
+                    <a class=" float-right" href="/film/show/{{ film.id }}" class="card-link">Réserver</a>
+                </div> #}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}

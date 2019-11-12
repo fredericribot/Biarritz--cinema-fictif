@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            {% for ticket in tickets %}
+            {% for seance in seances %}
+            {% if ticket.id_seance == seance.id %}
+            <h3>{{seance.film_id}}</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                     Salle {{ticket.salle}} – <strong>{{ticket.film_label}}</strong> –
+                    {{ticket.horaire_label}} à {{ticket.horaire|date('H')}} heures – Tarif {{ticket.tarif}}
+                </li>
+            </ul>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

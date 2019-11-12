@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            {% for ticket in tickets %}
+            <ul class="list-group">
+                <li class="list-group-item">{{ticket.utilisateur_nom |upper}} {{ticket.utilisateur_prenom|capitalize}}
+                    – Tarif {{ticket.tarif}} – Salle {{ticket.salle}} – <strong>{{ticket.film_label}}</strong> –
+                    {{ticket.horaire_label}} à {{ticket.horaire|date('H')}} heures
+                </li>
+                <li class="list-group-item"></li>
+            </ul>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

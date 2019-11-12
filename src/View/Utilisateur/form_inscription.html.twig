@@ -1,0 +1,77 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<style>
+
+
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 { 
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+</style>
+<div class="container">
+            <form class="form-horizontal" role="form" method="post">
+                <h2>Inscription</h2>
+                <div class="form-group">
+                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Nom" placeholder="Nom" class="form-control" name="nom" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Prenom" class="col-sm-3 control-label">Prénom</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Prenom" placeholder="Prénom" class="form-control" name="prenom" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="email" class="form-control" name= "email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Mot de passe*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="mot de passe" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-date-input" class="col-2 col-form-label">Date de naissance</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="date_de_naissance" name="date_de_naissance" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="numero" class="col-sm-3 control-label">Numéro mobile </label>
+                    <div class="col-sm-9">
+                        <input type="numero" id="numero" placeholder="ex: 0645851486" name="numero" class="form-control">
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Champs obligatoire</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Valider</button>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+
+{% endblock %}

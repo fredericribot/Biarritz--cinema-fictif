@@ -1,0 +1,109 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"></a></li>
+      <li><a href="/Utilisateur/administration">Liste films</a></li>
+      <li><a href="/Film/add">Ajout film</a></li>
+      <li><a href="#">Séance</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>ajout de film</h1>
+<form method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputTitre">Titre</label>
+            <input type="text" class="form-control" id="inputTitre" name="label" placeholder="Titre" {% if film.label %}
+                value="{{film.label}}" {% endif %}>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Acteurs</label>
+            <input type="text" class="form-control" id="inputDistribution" name="distribution" placeholder="Acteurs" {% if film.distribution %}
+                value="{{film.distribution}}" {% endif %}>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="synopsys">synopsys</label>
+        <textarea class="form-control" id="synopsys" name="synopsys" rows="6">{% if film.synopsys %}
+                value="{{film.synopsys}}" {% endif %}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="image">Affiche film</label>
+        <input type="text" class="form-control" id="image" name="image" placeholder="url:" {% if film.image %}
+                value="{{film.image}}" {% endif %}>
+    
+    </div>
+    <div class="form-group">
+        <label for="bande_annonce">Bande annonce</label>
+        <input type="text" class="form-control" name="bande_annonce" id="bande_annonce" placeholder="url:" {% if film.bande_annonce %}
+                value="{{film.bande_annonce}}" {% endif %}>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputState">Note presse</label>
+            <select id="inputState" name="note_presse" class="form-control">
+           {% if film.note_presse %}<option selected>{{film.note_presse}}</option> {% endif %}
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputState">Type public</label>
+            <select id="inputState" name="public" class="form-control">
+                {% if film.public %}<option selected>{{film.public}}</option>{% endif %}
+                <option value="1">Tous public</option>
+                <option value="2">Déconseillé au -12 ans</option>
+                <option value="3">Déconseillé au -16 ans</option>
+                <option value="4">Interdit au -18 ans</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputState">genre</label>
+            <select id="inputState" name="genre" class="form-control">
+                {% for genre in genres %}
+                 <option value="{{genre.id}}" selected>{{genre.label}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <label for="example-date-input" class="col-2 col-form-label">Date de sortie</label>
+        <div class="col-3">
+            <input class="form-control" type="date" value="2019-07-19" name="date_sortie" id="2000-12-25" {% if film.date_sortie %}
+                value="{{film.date_sortie}}" {% endif %}>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" name="coup_de_coeur" value="1" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Coup de coeur
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputPassword4">Durée</label>
+            <input type="number" class="form-control" name="duree" id="inputDistribution4" placeholder="ex: 130" {% if film.duree %}
+                value="{{film.duree}}" {% endif %}>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputState">En salle</label>
+            <select id="inputState" name="en_salle" class="form-control">
+               {% if film.en_salle %} <option selected>{{film.en_salle}}</option>{% endif %}
+                <option value="1">oui</option>
+                <option value="2">non</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">enregistrer</button>
+</form>
+{% endblock %}

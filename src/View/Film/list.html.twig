@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="font-weight-bold">Films</h1>
+            <p class="lead">Voici la liste des films à l'affiche pour les 10 prochains jours.</p>
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class="row">
+        {% for film in films %}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <img src="{{ film.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    {# Affichage coup de coeur #}
+                    {% if film.coup_de_coeur == 1 %}
+                    <div class="card-text">
+                        <span class="badge badge-pill text-danger float-right"><i class="fas fa-2x fa-heart"></i></span>
+                    </div>
+                    {% endif %}
+
+                    <h4 class="car-title"><a href="details/{{film.id}}">{{ film.label }}</a></h4>
+
+                    <div class="card-text small">
+                        <p class="shortDescription">
+                            {{film.synopsys}}
+                        </p>
+                    </div>
+                    <div class="card-text">
+                        <span class="p-2 badge badge-pill badge-primary">
+                            {{film.note_presse}} <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-dark" role="alert">
+            Nothing to display
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<a href="/film/add">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<div class="py-5">
+    <div class="card-content">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="{{ film.image }}" class="img-fluid" alt="..."> </br>
+             <div class="embed-responsive embed-responsive-16by9">
+             <iframe class="embed-responsive-item" frameborder="0" src="{{film.bande_annonce}}" allowfullscreen></iframe>
+            </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1 class="car-title">{{ film.label }}</h1>
+                    </div>
+                    <div class="col-md-4">
+
+                        {% if film.coup_de_coeur == 1 %}
+                        <span class="badge badge-pill text-danger">
+                            <i class="fas fa-3x fa-heart"></i>
+                        </span>
+                        {% else %}
+                        <span class="p-2">
+                            {% for i in 1..film.note_presse %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {# <div class="row">
+                    <div class="col-4">
+                        {{film.id_genre.value}}
+                    </div>
+                </div> #}
+                <div class="row py-3">
+                    <div class="col-lg-10">
+                        <div class="card-text">
+                            <p class="lead">
+                                {{film.synopsys}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6>Distribution</h6>
+                        <p>
+                            {{film.distribution}}
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6>Date de sortie</h6>
+                        <p>
+                            {{film.date_sortie}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="col offset-lg-6 col-lg-4">
+                        <a href="/film/list" class="btn btn-sm lg-3 btn-outline-primary btn-block">
+                            Retour à la liste des films
+                        </a>
+                       
+                    </div>
+
+                    {# <div class="card-text">
+                    <a class="" href="/film/details/{{ film.id }}" class="card-link">En savoir plus</a>
+                    <a class=" float-right" href="/film/show/{{ film.id }}" class="card-link">Réserver</a>
+                </div> #}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            
+            <h1 class="font-weight-bold text-dark bg-light">Actuellement en salle</h1>
+            
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class="row">
+        {% for film in filmsEnSalle %}
+        <div class="col-6 col-md-4">
+            <div class="card mt-3">
+                <img src=" {{ film.image }}" class="card-img-top cover" alt="affiche film">
+                {# <div class="card-content">
+                    <div class="card-text">
+                        {{film.label}}
+                    </div>
+                </div> #}
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-dark" role="alert">
+            Nothing to display
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="py-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="font-weight-bold text-dark bg-light">Prochainement dans nos salles</h1>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% for film in filmsProchainement %}
+    <div class="col-md-4">
+        <div class="card mt-3">
+            <img src="{{ film.image }}" class="card-img-top cover" alt="...">
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-dark" role="alert">
+        Nothing to display
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
